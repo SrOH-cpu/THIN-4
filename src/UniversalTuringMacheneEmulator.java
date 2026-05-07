@@ -13,6 +13,12 @@ public class UniversalTuringMacheneEmulator {
             this.inputBand = input.split("111")[1].split("");
         }
 
+        if(programming.startsWith("1")){
+            programming = programming.substring(1);
+        }
+        if(programming.endsWith("1")){
+            programming = programming.substring(0, programming.length()-1);
+        }
         String[] stateChanges = programming.split("11");
         currentState = stateChanges[0].split("1")[0].length();
         for(String stateChange : stateChanges){
