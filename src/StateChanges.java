@@ -5,6 +5,7 @@ public class StateChanges {
     private String write;
     private Direction direction;
 
+
     public StateChanges(int stateOne, String read, int stateTwo, String write, Direction direction){
         this.stateOne = stateOne;
         if("2".equals(read)){

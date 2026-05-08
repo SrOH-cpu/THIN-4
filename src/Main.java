@@ -40,6 +40,7 @@ public class Main{
         boolean fileRead = false;
         Path path = null;
         boolean dez = false;
+        boolean encoding = false;
 
         for(int i = 0; i < args.length; i++){
             if(args[i].equals("--help") || args[i].equals("-h")){
@@ -62,6 +63,28 @@ public class Main{
             if(args[i].equals("--dezimal-number") || args[i].equals("-d")){
                 dez = true;
             }
+            if(args[i].equals("--encoding") || args[i].equals("-e")){
+                encoding = true;
+                path= Path.of(args[++i]);
+            }
+        }
+
+        if(encoding){
+            String line;
+            String fileInput = "";
+            try(BufferedReader bufferedReader = Files.newBufferedReader(path, CHARSET);){
+                while((line = bufferedReader.readLine()) != null){
+                    fileInput += line;
+                    System.out.println(line);
+                    if(line == null){
+                        throw new IllegalArgumentException("input not found");
+                    }
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println(new GodelEncoder().encode(fileInput));
+            return;
         }
 
 
