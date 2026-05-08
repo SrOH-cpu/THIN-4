@@ -3,7 +3,7 @@ import java.util.*;
 public class UniversalTuringMacheneEmulator {
 
     private String[] inputBand = new String[]{" "};
-    private int startState;
+    private int startState = 1;
     private int currentState;
     private final List<StateChanges> stateChangesList = new ArrayList<StateChanges>();
     private int headPosition;
@@ -23,7 +23,6 @@ public class UniversalTuringMacheneEmulator {
             programming = programming.substring(0, programming.length()-1);
         }
         String[] stateChanges = programming.split("11");
-        startState = stateChanges[0].split("1")[0].length();
         currentState = startState;
         for(String stateChange : stateChanges){
             stateChangesList.add(new StateChanges(stateChange.split("1")[0].length(),Integer.toString(stateChange.split("1")[1].length()-1),stateChange.split("1")[2].length(),Integer.toString(stateChange.split("1")[3].length()-1), Direction.getDirection(stateChange.split("1")[4])));
