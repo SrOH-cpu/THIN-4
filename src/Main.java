@@ -9,6 +9,26 @@ import java.util.Scanner;
 
 public class Main{
 
+    private static void printHelpMessage(){
+        System.out.println("Universal Turing Machine Emulator");
+        System.out.println("==================================");
+        System.out.println();
+        System.out.println("Usage: java Main [options]");
+        System.out.println();
+        System.out.println("Options:");
+        System.out.println("  -p, --programming <program>  The Turing machine program to execute");
+        System.out.println("  -i, --input                  Enable manual input mode");
+        System.out.println("  -f, --file <path>            Read program from a file");
+        System.out.println("  -s, --step                   Enable step-by-step execution mode");
+        System.out.println("  -h, --help                   Display this help message");
+        System.out.println();
+        System.out.println("Examples:");
+        System.out.println("  java Main -p \"<program>\"");
+        System.out.println("  java Main -p \"<program>\" -i");
+        System.out.println("  java Main -f program.txt -s");
+        System.out.println();
+        System.out.println("Note: Either -p or -f must be specified.");
+    }
 
     public static void main(String[] args)
     {
@@ -21,7 +41,8 @@ public class Main{
 
         for(int i = 0; i < args.length; i++){
             if(args[i].equals("--help") || args[i].equals("-h")){
-                System.out.println("nothing");
+                printHelpMessage();
+                return;
             }
             if(args[i].equals("-programming") || args[i].equals("-p")){
                 programing = args[++i];
