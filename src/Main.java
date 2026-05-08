@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -57,7 +58,6 @@ public class Main{
             if(args[i].equals("--file") || args[i].equals("-f")){
                 path= Path.of(args[++i]);
                 fileRead = true;
-                manualInput = true;
             }
             if(args[i].equals("--dezimal-number") || args[i].equals("-d")){
                 dez = true;
@@ -68,18 +68,30 @@ public class Main{
         if(programing == null && !fileRead){
             throw new IllegalArgumentException("No program specified");
         }
-        if(dez){
-            programing = Long.toBinaryString(Long.parseLong(programing));
+        if(dez && !fileRead){
+            programing = new BigInteger(programing).toString(2);
             System.out.println(programing);
         }
         if(fileRead){
+            String line;
+            String fileInput = "";
             try(BufferedReader bufferedReader = Files.newBufferedReader(path, CHARSET);){
-                String line;
-                line = bufferedReader.readLine();
-                run(step,line);
+                System.out.println("here");
+                while((line = bufferedReader.readLine()) != null){
+                    fileInput += line;
+                    System.out.println(line);
+                    if(line == null){
+                        throw new IllegalArgumentException("input not found");
+                    }
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            if(dez){
+                fileInput = new BigInteger(fileInput).toString(2);
+            }
+
+            run(step,fileInput);
 
         }else if(manualInput){
             run(step,programing);
