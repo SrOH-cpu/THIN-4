@@ -26,7 +26,7 @@ public class Band {
 
     public void moveRight(){
         if(head.getNext() == null){
-            head.setNext(new Node("-"));
+            head.setNext(new Node(" "));
             end = head.getNext();
             end.setPrev(head);
         }
@@ -37,7 +37,7 @@ public class Band {
 
     public void moveLeft(){
         if(head.getPrev() == null){
-            head.setPrev(new Node("-"));
+            head.setPrev(new Node(" 2qqq"));
             start = head.getPrev();
             start.setNext(head);
             headpos = 0;

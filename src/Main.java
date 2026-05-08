@@ -107,7 +107,7 @@ public class Main{
         do{
             System.out.print("Enter manualInput: ");
             input = sc.nextLine();
-            if(input.matches("[0-1]+")){
+            if(input.matches("(-|[0-1])+")){
                 emulator.run(step, input);
             }else if("step true".equals(input)){
                 step = true;

@@ -45,7 +45,6 @@ public class UniversalTuringMacheneEmulator {
             System.out.println(stepCounter + ": " + printCalculation());
         }
         while (step()){
-            System.out.println("here");
             stepCounter++;
             if(steps){
                 System.out.println(stepCounter + ": " + printCalculation());

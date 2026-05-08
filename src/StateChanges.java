@@ -7,18 +7,18 @@ public class StateChanges {
 
     public StateChanges(int stateOne, String read, int stateTwo, String write, Direction direction){
         this.stateOne = stateOne;
-        if("3".equals(read)){
+        if("2".equals(read)){
             this.read = " ";
-        } else if(Integer.parseInt(read)>3){
+        } else if(Integer.parseInt(read)>2){
             this.read = Integer.toString(Integer.parseInt(read)-1);
         } else{
             this.read = read;
         }
 
         this.stateTwo = stateTwo;
-        if("3".equals(write)){
+        if("2".equals(write)){
             this.write = " ";
-        } else if(Integer.parseInt(write)>3){
+        } else if(Integer.parseInt(write)>2){
             this.write = Integer.toString(Integer.parseInt(write)-1);
         } else{
             this.write = write;
