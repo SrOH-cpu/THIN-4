@@ -38,6 +38,7 @@ public class Main{
         boolean step = false;
         boolean fileRead = false;
         Path path = null;
+        boolean dez = false;
 
         for(int i = 0; i < args.length; i++){
             if(args[i].equals("--help") || args[i].equals("-h")){
@@ -58,10 +59,18 @@ public class Main{
                 fileRead = true;
                 manualInput = true;
             }
+            if(args[i].equals("--dezimal-number") || args[i].equals("-d")){
+                dez = true;
+            }
         }
+
 
         if(programing == null && !fileRead){
             throw new IllegalArgumentException("No program specified");
+        }
+        if(dez){
+            programing = Long.toBinaryString(Long.parseLong(programing));
+            System.out.println(programing);
         }
         if(fileRead){
             try(BufferedReader bufferedReader = Files.newBufferedReader(path, CHARSET);){
