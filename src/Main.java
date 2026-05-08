@@ -92,6 +92,8 @@ public class Main{
                 step = true;
             }else if("step false".equals(input)){
                 step = false;
+            }else if("help".equals(input)){
+                printHelpMessage();
             }
         } while(!"q".equals(input));
     }
